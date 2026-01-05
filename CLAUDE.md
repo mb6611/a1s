@@ -100,3 +100,12 @@ iamClient := factory.Client().IAM()
 - Use `app.Flash().Infof()` for status messages
 - Dangerous actions should set `Dangerous: true` to show confirmation dialog
 - Use `app.Suspend()` to shell out (SSH, SSM sessions)
+
+## Project Rules
+
+- **k9s-source/** and **k9s.git/** are reference only - do not modify
+- Always use `S3Regional(region)` for S3 bucket operations (buckets are region-specific)
+- New resource actions must use the Action Registry pattern in `ui/action_registry.go`
+- Destructive actions (delete, terminate, stop) must set `Dangerous: true`
+- DAOs must self-register via `init()` with `RegisterAccessor()`
+- Follow k9s-style keybindings where applicable (vim navigation, `:` for commands, `/` for filter)
