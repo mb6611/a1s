@@ -1,0 +1,32 @@
+# Binary
+a1s
+*.exe
+
+# Reference/vendored source (not part of this project)
+k9s-source/
+k9s.git/
+
+# Claude Code internal state
+.claude/
+
+# Go
+*.test
+*.out
+coverage.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local config (optional - uncomment if you want to ignore local config)
+# ~/.config/a1s/

@@ -1,0 +1,73 @@
+// Example usage of Confirm dialog
+
+package main
+
+import (
+	"github.com/a1s/a1s/internal/ui"
+	"github.com/derailed/tview"
+)
+
+func showConfirmDialog() {
+	// Create pages manager (typically done at app level)
+	pages := ui.NewPages()
+
+	// Create and configure a normal confirmation
+	confirm := ui.NewConfirm(pages).
+		SetTitle("Confirm Action").
+		SetMessage("Are you sure you want to proceed?").
+		SetOnConfirm(func() {
+			// Handle confirmation
+			performAction()
+		}).
+		SetOnCancel(func() {
+			// Handle cancellation
+			cancelAction()
+		})
+
+	confirm.Show()
+
+	// Create a dangerous confirmation dialog
+	dangerousConfirm := ui.NewConfirm(pages).
+		SetMessage("Delete all resources? This cannot be undone!").
+		SetDangerous(true).
+		SetOnConfirm(func() {
+			deleteAllResources()
+		})
+
+	dangerousConfirm.Show()
+}
+
+// Using the generic dialog for info/error/warning
+func showDialogs() {
+	pages := ui.NewPages()
+
+	// Info dialog
+	ui.InfoDialog(pages, "Success", "Operation completed successfully").Show()
+
+	// Error dialog
+	ui.ErrorDialog(pages, "Error", "Failed to connect to cluster").Show()
+
+	// Warning dialog
+	ui.WarningDialog(pages, "Warning", "Resource quota exceeded").Show()
+
+	// Custom dialog
+	ui.NewDialog(pages, "custom-dialog").
+		SetTitle("Custom").
+		SetMessage("Custom message here").
+		SetButtons([]string{"Continue", "Skip", "Cancel"}).
+		SetButtonHandler(func(index int, label string) {
+			switch index {
+			case 0: // Continue
+				// ...
+			case 1: // Skip
+				// ...
+			case 2: // Cancel
+				// ...
+			}
+		}).
+		Show()
+}
+
+func performAction() {}
+func cancelAction() {}
+func deleteAllResources() {}
