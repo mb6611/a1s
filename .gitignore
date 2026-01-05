@@ -1,6 +1,5 @@
-# Binary
-a1s
-*.exe
+# Build output
+bin/
 
 # Reference/vendored source (not part of this project)
 k9s-source/

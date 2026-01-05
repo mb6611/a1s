@@ -14,9 +14,13 @@ import (
 	"github.com/a1s/a1s/internal/view"
 )
 
-const (
-	appName    = "a1s"
-	appVersion = "0.1.0"
+const appName = "a1s"
+
+// Build info - set via ldflags
+var (
+	appVersion = "dev"
+	commit     = "unknown"
+	buildDate  = "unknown"
 )
 
 var (
@@ -31,7 +35,9 @@ var (
 		Use:   "version",
 		Short: "Print version information",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("%s version %s\n", appName, appVersion)
+			fmt.Printf("%s %s\n", appName, appVersion)
+			fmt.Printf("  commit:  %s\n", commit)
+			fmt.Printf("  built:   %s\n", buildDate)
 		},
 	}
 )

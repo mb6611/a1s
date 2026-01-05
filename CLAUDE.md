@@ -9,17 +9,16 @@ a1s is a terminal-based UI for managing AWS resources, inspired by k9s (the Kube
 ## Build & Run Commands
 
 ```bash
-# Build the application
-go build -o a1s ./cmd/root.go
-
-# Run the application
-./a1s
+make build          # Build to bin/a1s
+make run            # Build and run
+make clean          # Remove build artifacts
+make test           # Run tests
+make fmt            # Format code
+make lint           # Run golangci-lint
+make build-all      # Cross-compile for all platforms
 
 # Run with specific profile/region
-./a1s --profile myprofile --region us-west-2
-
-# Build and verify
-go build ./...
+./bin/a1s --profile myprofile --region us-west-2
 ```
 
 ## Architecture
